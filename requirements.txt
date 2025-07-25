@@ -1,4 +1,4 @@
 torch
 ultralytics
-opencv-python-headless
+opencv-python
 seaborn
