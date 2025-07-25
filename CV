@@ -1,0 +1,31 @@
+import cv2
+import time
+
+class CameraStream:
+    def __init__(self, shared):
+        # initialize shared dictionary and picamera
+        self.shared = shared
+        self.cam = cv2.VideoCapture(0)
+        if not self.cam.isOpened():
+            print("Cannot open camera")
+            exit()
+
+    def run(self):
+        while True:
+            # capture as array
+            ret, frame = self.cam.read()
+            if ret is None:
+                print('[Camera]--(!) No captured frame')
+                continue
+
+            # store validated frame
+            self.shared["frame"] = frame
+            time.sleep(.05)
+            
+    def __del__(self):
+        if self.cam.isOpened():
+            self.cam.release()
+        cv2.destroyAllWindows()
+            
+            
+
