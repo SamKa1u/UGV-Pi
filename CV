@@ -1,31 +1,40 @@
-import cv2
 import time
+from ultralytics import YOLO
+from config import LABEL_MAP
+import torch
+import cv2
 
-class CameraStream:
-    def __init__(self, shared):
-        # initialize shared dictionary and picamera
+
+class ObjectTrack:
+    def __init__(self, shared, model_path):
         self.shared = shared
-        self.cam = cv2.VideoCapture(0)
-        if not self.cam.isOpened():
-            print("Cannot open camera")
-            exit()
+        
+        #load model from hub
+        # self.model = torch.hub.load("ultralytics/yolov5", "yolov5s")
 
+        # load from pt
+        self.model = YOLO("yolov5s.pt")
+        
     def run(self):
         while True:
-            # capture as array
-            ret, frame = self.cam.read()
-            if ret is None:
-                print('[Camera]--(!) No captured frame')
+            # retrieve shared frame
+            frame = self.shared.get("frame")
+            print("[CV]", frame)
+            if frame is None:
+                time.sleep(.01)
                 continue
 
-            # store validated frame
-            self.shared["frame"] = frame
-            time.sleep(.05)
-            
-    def __del__(self):
-        if self.cam.isOpened():
-            self.cam.release()
-        cv2.destroyAllWindows()
-            
-            
+            # run model inference
+            results = self.model.predict(frame, conf=.60, imgsz=480, max_det=1, verbose=True)
+            for result in results:
+                boxes = result.boxes.cls.tolist()
+                if boxes:
+                    label = int(boxes[0])
+                    obj = LABEL_MAP.get(label, None)
+                    if obj:
+                        print(f"[Object Track] Detected: {obj} at: {boxes}")
+                        self.shared["object"] = obj
+                    else:
+                        self.shared["object"] = None
+            time.sleep(.5)
 
