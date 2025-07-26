@@ -1,4 +1,4 @@
 picamera2
-opencv-python
-supervision
+opencv-python == 4.10.0
+supervision == 0.25.1
 rfdetr
