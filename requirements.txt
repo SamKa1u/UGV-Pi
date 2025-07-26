@@ -1,4 +1,4 @@
-torch
-ultralytics
+picamera2
 opencv-python
-seaborn
+supervision
+rfdetr
