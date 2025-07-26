@@ -35,15 +35,20 @@ git clone https://github.com/SamKa1u/Web-Server-Rover.git
 URL = "http://192.168.4.1/js?json="
 ```
 
-####  You can change the object of interest by modifying the OBJECT variable in config.py, once this is selected run main.py
+####  You can change the object of interest by modifying the OBJECT variable in config.py
 ```
 # Object of interest
 OBJECT = "person"
 ```
 
+#### Finally run main.py you'll see detections visualized and the robot's current motion reported in the shell
+  <img src="images/shell.PNG">
+  <img src="images/frame.PNG">
+
+
+
 
 ## Author
-
 
 Samuel Kalu
   
