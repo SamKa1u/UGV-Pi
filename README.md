@@ -26,7 +26,7 @@ git clone https://github.com/SamKa1u/Web-Server-Rover.git
 ```
 
 ####  Connect to the UGV AP from the pi
-  <img src="images/UGV.png">
+  <img src="images/ugv.PNG">
 
 #### Get the IP address of your wave rover and modify the URL variable in config.py to reach it
 
