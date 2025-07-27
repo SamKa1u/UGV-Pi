@@ -1,7 +1,8 @@
 # UGV-Pi
 
-   A project utilizing the Waveshare Rover kit and a Pi-5 for object detection and person following.
-  <img src="images/ugvpi.jpg">
+   A project utilizing the Waveshare Rover kit and a Pi-5 for object detection and person following. 
+   
+  <img src="images/ugvpi.jpg" style=" width:150px;height:220px;">
 
 ## Description
 
