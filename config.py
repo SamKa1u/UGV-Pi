@@ -1,7 +1,7 @@
 # ------- config
 
 # Object of interest
-OBJECT = "person" #cat
+OBJECT = "person" #cat person
 
 # ROI
 if OBJECT == "person":
@@ -18,6 +18,7 @@ else:
 # tolerances
 AREA_TOLERANCE = 2500
 CENTER_X_TOLERANCE = 50
+COLLISION_DIST = 25
 
 # UGV base-URL and json commands
 URL = "http://192.168.4.1/js?json="
