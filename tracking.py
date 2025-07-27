@@ -1,6 +1,5 @@
-from config import x1,x2,y1,y2, OBJECT, URL, SWIVEL_LEFT, SWIVEL_RIGHT, FORWARDS, BACK, STOP, BACK_RIGHT,BACK_LEFT,TURN_RIGHT,TURN_LEFT, AREA_TOLERANCE, CENTER_X_TOLERANCE
+from config import x1,x2,y1,y2, OBJECT, AREA_TOLERANCE, CENTER_X_TOLERANCE
 import time
-import requests
 from rfdetr.util.coco_classes import COCO_CLASSES
 
 class ObjectTracker:
@@ -9,34 +8,6 @@ class ObjectTracker:
         self.ROIarea = (x2-x1)*(y2-y1)
         self.centerX = 320
         self.centerY = 240
-        
-    def cmd(self, lateral, f_b):
-        if lateral == 1 and f_b == 0:
-            requests.get(URL+SWIVEL_RIGHT)
-            
-        elif lateral == -1 and f_b == 0:
-            requests.get(URL+SWIVEL_LEFT)
-            
-        elif lateral == 0 and f_b == 1:
-            requests.get(URL+FORWARDS)
-            
-        elif lateral == 0 and f_b == -1:
-            requests.get(URL+BACK)
-            
-        elif lateral == 1 and f_b == 1:
-            requests.get(URL+TURN_RIGHT)
-            
-        elif lateral == -1 and f_b == -1:
-            requests.get(URL+BACK_RIGHT)
-            
-        elif lateral == 1 and f_b == -1:
-            requests.get(URL+BACK_LEFT)
-            
-        elif lateral == -1 and f_b == 1:
-            requests.get(URL+TURN_LEFT)
-            
-        else:
-            requests.get(URL+STOP)
         
     def run(self):
         while True:
@@ -61,6 +32,7 @@ class ObjectTracker:
 #                     obj_centerY = obj_y1+(obj_y2-obj_y1)/2
 #                     print(obj_centerX) #, obj_centerY
 
+                    # if the first detection is object of interest move to center it
                     if COCO_CLASSES[label_idx] == OBJECT:
                 # ------Lateral motion planning
                         # if object center is to the right of camera center pivot right (R back | L forwards) 
@@ -92,10 +64,7 @@ class ObjectTracker:
                             print("[Tracking]--No front/back")
                             f_b = 0
                             
-                        self.cmd(lateral, f_b)
+                        self.shared["motion"]["lateral"] = lateral
+                        self.shared["motion"]["f_b"] = f_b
                         
             time.sleep(.05)
-
-            
-
-
