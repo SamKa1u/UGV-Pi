@@ -30,6 +30,16 @@ tracker = ObjectTracker(shared_state)
 tracker_thread = threading.Thread(target=tracker.run, daemon=True)
 tracker_thread.start()
 
+# --- Start Collision Thread ---
+collision = CollisionDetect(shared_state)
+collision_thread = threading.Thread(target=collision.run, daemon=True)
+collision_thread.start()
+
+# --- Start Motor Control Thread ---
+motors = Control(shared_state)
+motors_thread = threading.Thread(target=motors.run, daemon=True)
+motors_thread.start()
+
 cam.start()
 while True:
     frame = cam.capture_array()
