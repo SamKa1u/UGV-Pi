@@ -1,8 +1,8 @@
 # UGV-Pi
 
-   A project utilizing the Waveshare Rover kit and a Pi-5 for object detection and person following. 
+   A project utilizing the Waveshare Rover kit and a Pi-5 for object detection and person following. The rover is also capable of obstacle detection thanks to an ultrasonic sensor.
    
-  <img src="images/ugvpi.jpg" style=" width:150px;height:220px;">
+  <img src="images/ugvpi.jpg" style=" width:170px;height:220px;">
 
 ## Description
 
@@ -11,6 +11,8 @@
 * Waveshare Rover kit
 * Raspberry pi 5
 * Arducam
+* HC-SR04 Ultrasonic sensor with 3.3v logic level
+* jumper cables
 
 ### Dependencies
 
@@ -18,6 +20,7 @@
 * supervision
 * rfdetr
 * picamera2
+* gpiozero
 
 
 ### Executing program
@@ -60,8 +63,8 @@ Samuel Kalu
 
 ## Inspiration, code snippets, etc.
 
-* [Wiki](https://www.waveshare.com/wiki/General_Driver_for_Robots)
-* [Timestocome](https://github.com/timestocome/RaspberryPi-Robot/tree/master/Hardware)
+* [Waveshare Wiki](https://www.waveshare.com/wiki/General_Driver_for_Robots)
+* [Timestocome RaspberryPi-Robot](https://github.com/timestocome/RaspberryPi-Robot/tree/master/Hardware)
 * [Roboflow](https://github.com/roboflow/rf-detr)
-* [Saral Tayal](https://www.instructables.com/Object-Finding-Personal-Assistant-Robot-Ft-Raspber/)
-* [Lukas Biewald](https://www.oreilly.com/content/how-to-build-a-robot-that-sees-with-100-and-tensorflow/)
+* [Saral Tayal Assistant Robot Instructable](https://www.instructables.com/Object-Finding-Personal-Assistant-Robot-Ft-Raspber/)
+* [Lukas Biewald Robot Blog Post](https://www.oreilly.com/content/how-to-build-a-robot-that-sees-with-100-and-tensorflow/)
