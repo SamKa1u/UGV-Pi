@@ -1,10 +1,18 @@
 from picamera2 import Picamera2
-from CV_robo import ObjectDetect
-from tracking import ObjectTracker
-from config import x1,x2,y1,y2, OBJECT
 import threading
 import time
 import cv2
+
+# config
+from config import x1,x2,y1,y2, OBJECT
+
+# Vision
+from Vision.CV_robo import ObjectDetect
+from Vision.tracking import ObjectTracker
+
+# Motion
+from Motion.collision import CollisionDetect
+from Motion.motor_control import Control
 
 
 # initialize Picamera
