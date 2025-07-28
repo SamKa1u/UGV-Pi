@@ -11,21 +11,26 @@
 * Waveshare Rover kit
 * Raspberry pi 5
 * Arducam
-* HC-SR04 Ultrasonic sensor with 3.3v logic level
-* jumper cables
+* HC-SR04 Ultrasonic sensor with a 3.3v echo pin logic level
+* Jumper cables
+
+
+### Assembly
+
+#### Attach jumper cables to the ultrasonic sensor and Pi-5 as shown below, positioning both the camera and distance sensor at the front of the rover
+  <img src="images/pinout.PNG">
 
 ### Dependencies
 
-* opencv-python
-* supervision
-* rfdetr
-* picamera2
-* gpiozero
-
+* Opencv-python
+* Supervision
+* Rfdetr
+* Picamera2
+* Gpiozero
 
 ### Executing program
 
-#### Clone the repo from cmd line in a project directory of your choosing on your raspberry pi-5
+#### Clone the repo from cmd line in a project directory of your choosing on your pi
 ```
 git clone https://github.com/SamKa1u/Web-Server-Rover.git
 ```
